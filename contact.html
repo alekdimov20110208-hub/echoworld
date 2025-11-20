@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EchoWorld | Контакт</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="contact-page">
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="logo">🌍 EchoWorld</div>
+  <div class="menu-toggle" id="mobile-menu">☰</div>
+  <ul class="nav-links">
+    <li><a href="index.html">Начало</a></li>
+    <li><a href="earth.html">Земя</a></li>
+    <li><a href="air.html">Въздух</a></li>
+    <li><a href="water.html">Вода</a></li>
+    <li><a href="fire.html">Огън</a></li>
+  </ul>
+</nav>
+
+<!-- CONTACT CONTENT -->
+<section class="contact-content">
+  <h2>Свържи се с нас 🌿</h2>
+  <p>Ако имаш въпрос, идея или предложение — изпрати ни съобщение чрез формата по-долу.</p>
+
+  <form id="contact-form" class="contact-form">
+    <input type="text" name="user_name" placeholder="Вашето име" required>
+    <input type="email" name="user_email" placeholder="Вашият имейл" required>
+    <textarea name="message" placeholder="Вашето съобщение..." required></textarea>
+    <button type="submit">Изпрати</button>
+  </form>
+
+  <p id="form-status"></p>
+</section>
+<footer class="footer">
+    <p>© 2025 <strong>EchoWorld</strong> | Създаден с 🌿 от Alek Dimov</p>
+    <div class="footer-links">
+      <a href="contact.html">Контакт</a>
+      <a href="policy.html">Политика за опазване на природата</a>
+      <a href="learn.html">Научи повече</a>
+    </div>
+  </footer>
+<!-- EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script src="contact.js"></script>
+
+</body>
+</html>

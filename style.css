@@ -1,0 +1,1877 @@
+/* --- Глобални настройки --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  animation: fadeIn 1.2s ease-in-out;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: #1e3320;
+}
+
+/* --- Анимация при зареждане --- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Хедър и навигация --- */
+header {
+  background: #2c6e49;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+}
+
+header h1 {
+  font-size: 2rem;
+  animation: pulseLogo 3s ease-in-out infinite;
+}
+
+@keyframes pulseLogo {
+  0%, 100% { transform: scale(1); color: #ffffff; }
+  50% { transform: scale(1.05); color: #a8ff98; }
+}
+
+/* === NAVBAR === */
+.navbar {
+  width: 100%;
+  background: linear-gradient(to right, #4caf50, #81c784);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 6vw;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: white;
+  letter-spacing: 1px;
+}
+
+/* --- Навигационни линкове --- */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  font-size: 1.05rem;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: white;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* --- Активен линк (страница) --- */
+.nav-links a.active {
+  color: #e4e4e4;
+  font-weight: 700;
+}
+
+.nav-links a.active::after {
+  width: 100%;
+  background-color: #ffe57f;
+}
+
+/* --- Мобилна икона --- */
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: white;
+}
+
+/* --- Мобилно меню --- */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.95);
+    position: absolute;
+    top: 70px;
+    right: 6vw;
+    width: 220px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    overflow: hidden;
+    animation: slideIn 0.3s ease;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links li {
+    margin: 0;
+  }
+
+  .nav-links a {
+    color: #2c6e49;
+    padding: 12px 0;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+
+  .nav-links a:hover {
+    background: #eaffea;
+    color: #388e3c;
+  }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+
+/* --- Различен цвят за различна страница --- */
+body.earth-page .navbar {
+  background: linear-gradient(to right, #388e3c, #66bb6a);
+}
+
+body.air-page .navbar {
+  background: linear-gradient(to right, #03a9f4, #81d4fa);
+}
+
+body.water-page .navbar {
+  background: linear-gradient(to right, #2196f3, #64b5f6);
+}
+
+body.fire-page .navbar {
+  background: linear-gradient(to right, #f44336, #ff7043);
+}
+
+/* --- Глобални настройки --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* --- Пълноцветен преливащ фон --- */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+
+  /* вертикално преливащ градиент */
+  background: linear-gradient(180deg, #0abb0a, #32aa14, #eaffea, #f8fff8);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+/* --- Анимация на градиента --- */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* --- Main контейнер --- */
+main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  text-align: center;
+}
+
+/* --- Секция Intro --- */
+.intro {
+  width: 100%;
+  max-width: 700px; /* максимална ширина */
+  background: rgba(255, 255, 255, 0.85); /* лек полупрозрачен, за да личи фонът */
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  animation: fadeIn 1.2s ease-in-out;
+}
+
+
+.intro h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: #2c6e49;
+}
+
+.intro p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  line-height: 1.6;
+  color: #1e3320;
+}
+
+button#support-btn {
+  background: #2c6e49;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+button#support-btn:hover {
+  background: #3c8c5d;
+  transform: scale(1.05);
+}
+
+#message {
+  margin-top: 15px;
+  font-weight: bold;
+  color: #2c6e49;
+}
+
+/* --- Анимация при зареждане --- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .intro {
+    padding: 20px;
+    max-width: 90%;
+  }
+
+  .intro h2 {
+    font-size: 1.6rem;
+  }
+
+  .intro p {
+    font-size: 0.95rem;
+  }
+
+  button#support-btn {
+    padding: 10px 16px;
+    font-size: 0.95rem;
+  }
+}
+/* --- Main контейнер --- */
+main {
+  flex: 1;
+  display: flex;
+  justify-content: center; /* хоризонтално центриране */
+  align-items: center;     /* вертикално центриране */
+  padding: 30px;
+  text-align: center;      /* центриране на текста */
+}
+
+/* --- Секция Intro --- */
+.intro {
+  width: 100%;
+  max-width: 700px;         /* максимална ширина */
+  background: rgba(255, 255, 255, 0.85);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Пълноцветен преливащ фон --- */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+
+  /* вертикално преливащ градиент */
+  background: linear-gradient(180deg, #0abb0a, #32aa14, #eaffea, #f8fff8);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+/* --- Анимация на градиента --- */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* --- Основна секция --- */
+.earth-section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  margin-top: 3rem;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  padding: 4rem 8vw;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(4px);
+  box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.05);
+  border-radius: 0 0 40px 40px;
+}
+
+/* --- Текст --- */
+.earth-text {
+  flex: 1 1 55%;
+  text-align: left;
+}
+
+.earth-text h2 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #1b2e1b;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.6);
+  border-left: none; /* махаме лявата линия, защото стои зле при центриране */
+  padding-left: 0;
+  margin-bottom: 1rem;
+  text-align: center; /* ✅ центриране */
+  display: block;
+}
+
+
+.earth-text p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #243a24;
+  background: rgba(255, 255, 255, 0.65);
+  padding: 1rem 1.25rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+/* --- Quote box --- */
+.earth-content .quote-box {
+  width: 100%;
+  max-width: 1400px;
+  margin: 2rem auto;
+  padding: 2rem 2.5rem;
+  background: linear-gradient(135deg, #f6fff6, #eafbea);
+  border-left: 6px solid #538c3c;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.earth-content .quote-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+.quotes-list-earth {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 0;
+  list-style: none;
+}
+
+.quotes-list-earth li {
+  background: rgba(255, 255, 255, 0.85);
+  margin-bottom: 1rem;
+  padding: 1rem 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: #2e7d32;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Hover ефект върху целия box */
+.quotes-list-earth li:hover {
+  background: rgba(102, 187, 106, 0.15); /* леко зелено оцветяване */
+  transform: translateY(-5px); /* леко повдигане */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+
+
+
+
+.quotes-earth {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 0;
+}
+
+.quotes-list-earth {
+  list-style: none;
+  padding: 0;
+}
+
+.quotes-list-earth h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: #2e7d32; /* зелено за Земя */
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  border-bottom: 3px solid #66bb6a;
+  padding-bottom: 0.5rem;
+  font-family: 'Georgia', serif;
+}
+
+/* Стил на всеки цитат */
+.quotes-list-earth li {
+  background: rgba(255, 255, 255, 0.85);
+  margin-bottom: 1rem;
+  padding: 1rem 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: #2e7d32;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Hover ефект на box */
+.quotes-list-earth li:hover {
+  background: rgba(139, 195, 74, 0.1); /* лек зелен фон */
+  transform: translateY(-5px); /* леко повдигане */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+
+/* Hover ефект върху целия box */
+.quotes-list-air li:hover {
+  background: rgba(2,136,209,0.15); /* леко оцветяване */
+  transform: translateY(-5px); /* леко повдигане */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Отзивчивост за мобилни устройства */
+@media (max-width: 768px) {
+  .quotes-carousel {
+    padding: 1.5rem 1rem;
+    margin: 2rem 1rem;
+  }
+
+  .quotes-carousel h2 {
+    font-size: 1.8rem;
+  }
+
+  .quote-slide {
+    font-size: 1rem;
+  }
+
+  .prev, .next {
+    font-size: 1.5rem;
+    padding: 0.2rem 0.5rem;
+  }
+}
+
+
+
+/* Меки анимации при зареждане */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Отзивчивост за мобилни устройства */
+@media (max-width: 768px) {
+  .quotes-carousel {
+    padding: 1.5rem 1rem;
+    margin: 2rem 1rem;
+  }
+
+  .quotes-carousel h2 {
+    font-size: 1.8rem;
+  }
+
+  .quotes-carousel p {
+    font-size: 1rem;
+  }
+}
+
+/* --- Снимка --- */
+.earth-image {
+  flex: 1 1 40%;
+  text-align: center;
+}
+
+.earth-image img {
+  width: 80%;          /* 🔹 беше 100%, сега по-малко */
+  max-width: 500px;    /* 🔹 ограничаваме максималната ширина */
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+  display: block;
+  margin: 1.5rem auto;
+}
+
+.earth-image img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.img-caption {
+  display: inline-block;            
+  text-align: center;
+  font-size: 1.4rem;                
+  font-weight: 700;                  
+  color: #1a3d1a;                    
+  margin: 0.5rem auto 1rem auto;     
+  padding: 0.3rem 1rem;              
+  background: rgba(246, 255, 246, 0.8); 
+  border-radius: 8px;                
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease; /* добавено */
+}
+
+.img-caption:hover {
+  transform: translateY(-3px);                 /* леко повдигане */
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);     /* подсилено сенче */
+  background: rgba(246, 255, 246, 1);         /* фонът става по-наситен */
+}
+
+
+
+.eco-tipsearth {
+  background-color: #eafbea;
+  border-left: 4px solid #3c8c5d;
+  border-radius: 10px;
+  padding: 1.5rem 2rem;
+  margin: 2rem auto;
+  text-align: left;
+
+  max-width: 700px;      
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.eco-tipsearth:hover {
+  transform: translateY(-4px);                   /* леко повдигане */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);    /* по-силна сянка */
+  background-color: #e0f5e0;                     /* малко по-наситен фон */
+}
+
+
+/* --- Глобални настройки --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+html, body {
+  height: 100%;
+}
+
+body.air-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  /* --- Пълноцветен преливащ фон --- */
+
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+
+  /* вертикално преливащ градиент */
+  background: linear-gradient(180deg, #13a3e6, #4ba8ff, #eaffea, #f8fff8);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+
+}
+
+/* --- Анимация на градиента --- */
+@keyframes airGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* --- Main контейнер --- */
+main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  text-align: center;
+}
+
+/* --- Intro секция --- */
+.intro, .air-content .quote-box {
+  width: 100%;
+  max-width: 700px;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  text-align: center;
+  margin: 1rem auto;
+}
+
+/* --- Заглавие и текст --- */
+.intro h2, .quote-box h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 15px;
+  color: #07852d;
+}
+
+.intro p, .quote-box p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: #099410;
+}
+
+/* --- Quote box специално за Air --- */
+.air-content .quote-box {
+  max-width: 1400px;
+  margin: 2rem auto;
+  padding: 2rem 2.5rem;
+  border-left: 6px solid #0288d1;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.air-content .eco-tipsair:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+.air-content .quote-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.air-content .quote-box p{font-size: 1.05rem;
+  line-height: 1.6;
+  color: #243a24;
+  background: rgba(255, 255, 255, 0.65);
+  padding: 1rem 1.25rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);}
+/* --- Еко съвети --- */
+.eco-tipsair {
+  background-color: #ffffff;
+  border-left: 4px solid #0274d1;
+  border-radius: 10px;
+  padding: 1.5rem 2rem;
+  margin: 2rem auto;
+  text-align: left;
+  max-width: 700px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Контейнер за Air Image и Caption */
+.air-image {
+  display: inline-block;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.air-image img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.img-captionair {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  background: rgba(246, 255, 246, 0.8); 
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #0288d1;
+  text-align: center;
+  transition: transform 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  
+}
+
+/* Hover ефект за контейнера */
+.air-image:hover img {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+}
+
+.air-image:hover + .img-captionair,
+.img-captionair:hover {
+  transform: scale(1.05);
+  color: #01579b;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+
+.eco-tipsair h3 {
+  color: #0277bd;
+  margin-bottom: 1rem;
+}
+
+.eco-tipsair li {
+  margin: 0.5rem 0;
+}
+
+/* --- Секция с изображение --- */
+.air-image {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.air-image img {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  margin-bottom: 0.5rem;
+}
+
+
+
+/* --- Navbar за Air страница --- */
+.air-page .navbar {
+  background: linear-gradient(90deg, #0288d1, #03a9f4, #4fc3f7);
+}
+
+/* --- Navbar линкове за Air страница --- */
+.air-page .navbar a {
+  color: white;
+}
+
+/* --- Footer за Air страница --- */
+.air-page .footer {
+  background: linear-gradient(90deg, #0288d1, #03a9f4, #4fc3f7);
+  color: white;
+}
+.air-page .footer a {color: rgb(10, 75, 105);
+
+ font-weight: bold;}
+
+/* --- Footer --- */
+footer {
+  margin-top: auto;
+  text-align: center;
+  background: linear-gradient(90deg, #0288d1, #03a9f4);
+  color: #fff;
+  padding: 1rem 0;
+  font-weight: bold;
+  box-shadow: 0 -3px 10px rgba(0,0,0,0.2);
+}
+
+footer a {
+  color: #dfffe2;
+  text-decoration: none;
+  margin: 0 0.5rem;
+  font-weight: bold;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .intro, .air-content .quote-box, .eco-tips {
+    max-width: 95%;
+    padding: 1.5rem;
+  }
+
+  .intro h2, .quote-box h2 {
+    font-size: 1.6rem;
+  }
+
+  .intro p, .quote-box p {
+    font-size: 0.95rem;
+  }
+
+  button {
+    padding: 10px 16px;
+    font-size: 0.95rem;
+  }
+}
+/* Текст за Air страница */
+.air-page .intro p,
+.air-page .quote-box p {
+  color: #01579b; /* тъмносиньо за Air */
+}
+
+.air-page .intro h2,
+.air-page .quote-box h2 {
+  color: #0288d1; /* заглавие по-синьо, различно от Earth зелено */
+}
+
+
+/* --- Footer --- */
+footer {
+  margin-top: auto;
+  text-align: center;
+  background: linear-gradient(90deg, #0288d1, #03a9f4);
+  color: #fff;
+  padding: 1rem 0;
+  font-weight: bold;
+  box-shadow: 0 -3px 10px rgba(0,0,0,0.2);
+}
+
+footer a {
+  color: #dfffe2;
+  text-decoration: none;
+  margin: 0 0.5rem;
+  font-weight: bold;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .intro, .air-content .quote-box, .eco-tips {
+    max-width: 95%;
+    padding: 1.5rem;
+  }
+
+  .intro h2, .quote-box h2 {
+    font-size: 1.6rem;
+  }
+
+  .intro p, .quote-box p {
+    font-size: 0.95rem;
+  }
+
+  button {
+    padding: 10px 16px;
+    font-size: 0.95rem;
+  }
+}
+
+
+
+
+
+
+/* === FOOTER === */
+.footer {
+  background: linear-gradient(to right, #388e3c, #2e7d32);
+  color: #e8f5e9;
+  text-align: center;
+  padding: 1.8rem 1rem;
+  margin-top: 3rem;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+  font-weight: bold;
+}
+
+.footer p {
+  margin: 0.5rem 0 1rem;
+  font-size: 1rem;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  color: #c8e6c9;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  font-weight: bold;
+}
+
+.footer-links a:hover {
+  color: #ffffff;
+}
+
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .earth-section {
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+
+  .earth-text {
+    text-align: center;
+  }
+
+  .earth-text h2 {
+    border-left: none;
+    border-bottom: 4px solid #4caf50;
+    display: inline-block;
+    padding-bottom: 0.5rem;
+  }
+
+  .earth-image img {
+    max-width: 90%;
+  }
+
+  .earth-content .quote-box {
+    max-width: 95%;
+    padding: 1.5rem;
+  }
+}
+/* --- Общ стил за новите страници --- */
+.contact-content, .policy-content, .learn-content {
+  max-width: 800px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* --- ФОРМУЛЯР ЗА КОНТАКТ (Contact Page) --- */
+
+.contact-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 100px 20px;
+  background: linear-gradient(180deg, #f3fff3, #e8f5e9);
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+}
+
+.contact-section h2 {
+  color: #2e7d32;
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.contact-section p {
+  max-width: 700px;
+  text-align: center;
+  color: #4f5b4f;
+  font-size: 1.1rem;
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+/* === CONTACT PAGE === */
+
+.contact-page {
+  background: linear-gradient(to bottom, #e8f5e9, #c8e6c9);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Центрирано съдържание */
+.contact-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  padding: 100px 20px 60px;
+}
+
+/* Заглавието h2 най-отгоре */
+.contact-content h2 {
+  font-size: 2.2rem;
+  color: #2e7d32;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  border-bottom: 3px solid #66bb6a;
+  padding-bottom: 0.5rem; font-family: 'Times New Roman', Times, serif;
+}
+
+/* Подзаглавието */
+.contact-content p {
+  font-size: 1.2rem;
+  color: #388e3c;
+  margin-bottom: 2rem; font-family: 'Times New Roman', Times, serif;
+}
+
+/* Формуляр */
+.contact-page {
+  background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 35%, #9ef0a1 70%, #81c784 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column; font-family: 'Times New Roman', Times, serif;
+}
+.contact-form {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 1rem;
+  border: 2px solid #a5d6a7;
+  border-radius: 10px;
+  font-size: 1rem;
+  outline: none;
+  transition: 0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #4caf50;
+  box-shadow: 0 0 8px rgba(76, 175, 80, 0.3);
+}
+
+.contact-form button {
+  background: #4caf50;
+  color: white;
+  border: none;
+  padding: 0.9rem;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s;
+   font-family: 'Times New Roman', Times, serif;
+}
+.contact-form button:hover {
+  background: #388e3c;
+  box-shadow: 0 6px 18px rgba(56, 142, 60, 0.35);
+  transform: translateY(-2px);
+}
+
+/* За текстовото поле */
+.contact-form textarea {
+  resize: vertical;
+  min-height: 150px;
+}
+
+/* Отзивчивост */
+@media (max-width: 768px) {
+  .contact-section {
+    padding: 80px 15px;
+  }
+
+  .contact-form {
+    padding: 1.5rem;
+  }
+}
+
+
+/* === POLICY PAGE === */
+
+.policy-page {
+  background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 35%, #9ef0a1 70%, #81c784 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Основно съдържание */
+.policy-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  padding: 100px 20px 60px;
+  color: #004d40;
+}
+
+/* Заглавие */
+.policy-content h2 {
+  font-size: 2.3rem;
+  color: #00796b;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  border-bottom: 3px solid #26a69a;
+  padding-bottom: 0.5rem;
+   font-family: 'Times New Roman', Times, serif;
+}
+
+/* Текст */
+.policy-content p {
+  max-width: 800px;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #004d40;
+  margin-bottom: 2rem;
+   font-family: 'Times New Roman', Times, serif;
+   
+}
+
+/* Списък с политики */
+.policy-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  text-align: left;
+  max-width: 700px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 15px;
+  padding: 25px 35px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+   font-family: 'Times New Roman', Times, serif;
+}
+
+.policy-list li {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #00695c;
+  margin-bottom: 10px;
+  transition: transform 0.2s ease, color 0.2s ease;
+   font-family: 'Times New Roman', Times, serif;
+}
+
+/* Ефект при hover */
+.policy-list li:hover {
+  transform: translateX(5px);
+  color: #004d40;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .policy-content h2 {
+    font-size: 1.9rem;
+  }
+  .policy-content p {
+    font-size: 1rem;
+  }
+  .policy-list {
+    padding: 20px;
+  }
+}
+
+
+/* === LEARN PAGE === */
+
+.learn-page {
+  background: linear-gradient(135deg, #c8e6c9 0%, #a5d6a7 35%, #81c784 70%, #66bb6a 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Основно съдържание */
+.learn-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 100px 20px 60px;
+  color: #1b5e20;
+}
+
+/* Заглавие */
+.learn-content h2 {
+  font-size: 2.3rem;
+  color: #2e7d32;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  border-bottom: 3px solid #43a047;
+  padding-bottom: 0.5rem;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+/* Описание */
+.learn-content p {
+  max-width: 800px;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #1b5e20;
+  margin-bottom: 2.5rem;
+   font-family: 'Times New Roman', Times, serif;
+}
+
+/* Статии */
+.learn-articles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  max-width: 1000px;
+  width: 100%;
+}
+
+.learn-articles article {
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 15px;
+  padding: 25px 30px;
+  text-align: left;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.learn-articles article:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Заглавия в статиите */
+.learn-articles h3 {
+  font-size: 1.4rem;
+  color: #2e7d32;
+  margin-bottom: 10px;
+}
+
+/* Текст в статиите */
+.learn-articles p {
+  font-size: 1rem;
+  color: #33691e;
+  line-height: 1.7;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .learn-content h2 {
+    font-size: 1.9rem;
+  }
+  .learn-articles {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+/* --- Footer винаги долу --- */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+footer {
+  margin-top: auto;
+  text-align: center;
+  background: linear-gradient(90deg, #2e7d32, #388e3c, #43a047);
+  color: #fff;
+  padding: 1rem 0;
+  font-weight: 500;
+  box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.2);
+}
+
+footer a {
+  color: #dfffe2;
+  text-decoration: none;
+  margin: 0 0.5rem;
+  font-weight: 600;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* Скриваме стандартните линкове на малки екрани */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: #2c6e49;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 200px;
+    border-radius: 0 0 10px 10px;
+    padding: 1rem;
+  }
+
+  .nav-links li {
+    margin: 1rem 0;
+  }
+
+  .nav-toggle {
+    display: block;
+    cursor: pointer;
+    font-size: 1.8rem;
+    color: white;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+  }
+}
+
+/* Когато менюто е активно */
+.nav-links.active {
+  display: flex;
+}
+/* 🌊 --- Water Page Styles --- */
+
+/* Фон — преливащ синьо-аква градиент */
+body.water-page {
+  background: linear-gradient(180deg, #020494, #023672, #b2ebf2, #80deea);
+  background-size: 400% 400%;
+  animation: waterFlow 15s ease infinite;
+}
+
+/* Анимация за леко движение на цвета */
+@keyframes waterFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Основно съдържание */
+.water-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+/* Текстовата част */
+.water-text {
+  text-align: center;
+  max-width: 1400px;
+  margin-bottom: 2rem;
+}
+
+/* Кутия с цитат */
+.quote-boxwater {
+  background-color: rgba(224, 231, 250, 0.8);
+  border-left: 6px solid #0288d1;
+  border-radius: 15px;
+  padding: 1.8rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.quote-boxwater p {  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #243a24;
+  background: rgba(255, 255, 255, 0.65);
+  padding: 1rem 1.25rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);}
+.quote-boxwater:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.quote-boxwater h2 {
+  color: #01579b;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.quote-boxwater p {
+  color: #0277bd;
+  line-height: 1.6;
+}
+
+/* --- Еко съвети --- */
+.eco-tipswater {
+  background-color: rgba(225, 245, 254, 0.9);
+  border-left: 4px solid #039be5;
+  border-radius: 10px;
+  padding: 1.5rem 2rem;
+  margin: 2rem auto;
+  text-align: left;
+  max-width: 700px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.eco-tipswater:hover {
+  transform: scale(1.02);
+}
+
+.eco-tipswater h3 {
+  color: #0277bd;
+}
+
+.eco-tipswater li {
+  margin: 0.5rem 0;
+  color: #01579b;
+}
+
+/* --- Снимка и надпис — ОПРАВЕНО --- */
+.water-image {
+  text-align: center;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.water-image img {
+  width: 100%;
+  max-width: 500px;       /* 🔹 снимката става по-голяма, но не прекалено */
+  height: auto;          /* 🔹 перфектни пропорции */
+  border-radius: 18px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+  object-fit: cover;     /* 🔹 винаги изглежда добре */
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.water-image img:hover {
+  transform: scale(1.04); 
+  box-shadow: 0 12px 45px rgba(0, 150, 255, 0.5);
+}
+
+.img-captionwater {
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #01579b;
+  background: rgba(225, 245, 254, 0.8);
+  margin-bottom: 1rem;
+  padding: 0.7rem 1.3rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.img-captionwater:hover {
+  transform: translateY(-3px);
+  background: rgba(179, 229, 252, 1);
+}
+
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .water-image img {
+    width: 95%;
+  }
+  .quote-boxwater, .eco-tipswater {
+    max-width: 90%;
+    padding: 1.5rem;
+  }
+}
+/* 🌊 --- NAV & FOOTER специално за Water --- */
+
+body.water-page .navbar {
+  background: linear-gradient(90deg, #0206d1, #18045f);
+  box-shadow: 0 4px 12px rgba(0, 100, 200, 0.4);
+}
+
+body.water-page .navbar .logo {
+  color: #e1f5fe;
+}
+
+body.water-page .nav-links a {
+  color: #e0f7fa;
+  transition: color 0.3s, transform 0.3s;
+}
+
+body.water-page .nav-links a:hover {
+  color: #ffffff;
+  transform: scale(1.05);
+}
+
+/* --- Footer --- */
+body.water-page .footer {
+  background: linear-gradient(180deg, #0206d1, #18045f);
+  color: #e1f5fe;
+  box-shadow: 0 -4px 12px rgba(0, 100, 200, 0.4);
+}
+
+body.water-page .footer a {
+  color: #677fe9;
+  transition: color 0.3s;
+  font-weight: bold;
+}
+
+body.water-page .footer a:hover {
+  color: #ffffff;
+}
+/* 🌋 FIRE PAGE STYLE */
+.fire-page {
+  background: linear-gradient(180deg, #330000, #660000,#662900);
+  color: #fff5ee;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 🔥 Навигация и футър */
+.fire-page .navbar {
+  background: linear-gradient(90deg, #b71c1c, #ff5722);
+  box-shadow: 0 0 15px rgba(255, 87, 34, 0.5);
+}
+
+.fire-page .footer {
+  background: linear-gradient(90deg, #ff5722, #b71c1c);
+  box-shadow: 0 0 15px rgba(255, 87, 34, 0.6);
+
+}
+.fire-page .footer a {color: rgb(124, 13, 13);
+ text-shadow: 0 0 5px rgba(255, 87, 34, 0.5);
+ font-weight: bold;
+
+
+}
+/* 🔥 Текст */
+.fire-page .quote-box h2 {
+  color: #ff7043; /* оранжево заглавие */
+  text-shadow: 0 0 10px rgba(255, 87, 34, 0.8);
+}
+
+.fire-page .quote-box p {
+  color: #ffe0b2; /* светло топло бежово */
+}
+
+.fire-page .eco-tipsfire h3 {
+  color: #ff8a65;
+  text-shadow: 0 0 5px rgba(255, 87, 34, 0.5);
+}
+
+.fire-page .eco-tipsfire ul li {
+  color: #fff3e0;
+}
+
+/* 🔥 Изображение и надпис */
+.fire-page .fire-image {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.fire-page .fire-image img {
+  width: 80%;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(255, 87, 34, 0.8);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.fire-page .fire-image img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 35px rgba(255, 111, 0, 0.9);
+}
+
+.fire-page .img-captionfire {
+  margin-bottom: 1rem;
+  font-style: italic;
+  color: #fff0e0;
+  text-shadow: 0 0 8px rgba(255, 111, 0, 0.6);
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.fire-page .img-captionfire:hover {
+  color: #ffe0b2;
+  text-shadow: 0 0 12px rgba(255, 204, 128, 0.9);
+}
+
+/* Центриране на съдържанието */
+.fire-page .content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+}
+/* --- Fire Page --- */
+.fire-page .content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;       /* центрира всичко хоризонтално */
+  justify-content: center;   /* центрира по вертикала при нужда */
+  text-align: center;
+  padding: 40px 20px;
+  min-height: calc(100vh - 160px);
+}
+
+/* --- Quote Box --- */
+.fire-page .quote-box {
+  background: rgba(255, 87, 34, 0.15);
+  border-left: 6px solid #ff7043;
+  padding: 30px;
+  margin-bottom: 2.5rem;
+  border-radius: 18px;
+  box-shadow: 0 0 20px rgba(255, 87, 34, 0.4);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  max-width: 1300px;
+  width: 95%;
+  margin-left: auto;          /* центриране */
+  margin-right: auto;         /* центриране */
+}
+
+/* --- Hover ефект --- */
+.fire-page .quote-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 30px rgba(255, 111, 0, 0.6);
+}
+.fire-page .quote-box p { font-size: 1.05rem;
+  line-height: 1.6;
+  color: #803b02;
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.65);
+  padding: 1rem 1.25rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);}
+/* --- Eco Tips --- */
+.fire-page .eco-tipsfire {
+    text-align: left;
+  background: rgba(255, 111, 0, 0.12);
+  border-left: 5px solid #ff8a65;
+  padding: 25px;
+  margin-bottom: 2rem;
+
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(255, 111, 0, 0.3);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  max-width: 800px;
+  width: 90%;
+  margin-left: auto;          /* центриране */
+  margin-right: auto;         /* центриране */
+}
+.fire-page .eco-tipsfire li {
+  margin: 0.6rem 0;          /* по-малко разстояние между редовете */
+  font-size: 1.1rem;
+  line-height: 1.2;          /* умерена разредка */
+  color: #5a2500;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+/* --- Hover --- */
+.fire-page .eco-tipsfire:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 25px rgba(255, 138, 101, 0.8);
+}
+
+/* --- Image --- */
+.fire-page .fire-image {
+  margin-top: 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;        /* центрира изображението и текста */
+  justify-content: center;
+}
+
+.fire-page .fire-image img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 15px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 0 10px rgba(255, 111, 0, 0.3);
+}
+
+.fire-page .fire-image img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 25px rgba(255, 111, 0, 0.6);
+}
+
+/* --- Caption --- */
+.fire-page .img-captionfire {
+  font-weight: 600;
+  color: #ff7043;
+  margin-bottom: 10px;
+  transition: color 0.3s ease;
+  text-align: center;
+  font-size: 1.05rem;
+  color: #803b02;
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.65);
+  padding: 1rem 1.25rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+   transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+
+.fire-page .img-captionfire:hover {
+  color: #ff3d00;
+   transform: scale(1.05);
+  color: #9b2001;
+  box-shadow: 0 4px 12px rgb(160, 29, 29);
+}
+/* --- Мини-игра "Падат боклуци" --- */
+.mini-game-fall {
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: #e8f5e9;
+  border-radius: 12px;
+  text-align: center;
+}
+.mini-game-fall h3 {
+  font-family: 'Comic Sans MS', cursive, sans-serif; /* игрив шрифт */
+  font-size: 1.8rem;
+  color: #2e7d32;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  margin-bottom: 0.8rem;
+}
+
+.mini-game-fall p {
+  font-family: 'Georgia', serif; /* елегантен шрифт за текста */
+  font-size: 1.2rem;
+  color: #388e3c;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+#score-fall, #missed-fall {
+  font-family: 'Arial Black', Gadget, sans-serif;
+  font-size: 1.2rem;
+  color: #4caf50;
+  margin-top: 0.5rem;
+}
+
+#missed-fall {
+  color: #d32f2f;
+}
+
+.game-area-fall {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  border: 2px dashed #4caf50;
+  margin: 1rem 0;
+  border-radius: 10px;
+  overflow: hidden;
+  background-image: url('https://agrogigant.bg/wp-content/uploads/2021/09/pexels-james-frid-1097016-1024x683.jpg'); /* фон по желание */
+  background-size: cover;
+}
+
+/* общ стил за падащите предмети */
+.falling-trash {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  animation: swing 0.5s infinite alternate;
+  transition: transform 0.1s;
+}
+
+/* леко поклащане за по-живо усещане */
+@keyframes swing {
+  0% { transform: rotate(-15deg); }
+  100% { transform: rotate(15deg); }
+}
+
+/* различни типове боклук (може да добавиш повече) */
+.falling-trash.bottle { width: 60px; }
+.falling-trash.can { width: 55px; }
+.falling-trash.paper { width: 50px; }
+
+.falling-trash.clicked {
+  transform: scale(1.3) rotate(360deg);
+  opacity: 0;
+  transition: transform 0.3s, opacity 0.3s;
+}
+.quotes-list-air {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 0;
+  list-style: none;
+}
+
+.quotes-list-air li {
+  background: rgba(255, 255, 255, 0.85);
+  margin-bottom: 1rem;
+  padding: 1rem 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: #2e7d32;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Hover ефект върху целия box */
+.quotes-list-air li:hover {
+  background: rgba(102, 187, 106, 0.15); /* леко зелено оцветяване */
+  transform: translateY(-5px); /* леко повдигане */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+
+
+
+
+.quotes-air {
+  max-width: 250px;
+  margin: 2rem auto;
+  padding: 0;
+}
+
+.quotes-list-air {
+  list-style: none;
+  padding: 0;
+}
+
+.quotes-list-air h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: #2e6d7d; /* зелено за Земя */
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  border-bottom: 3px solid #66b8bb;
+  padding-bottom: 0.5rem;
+  font-family: 'Georgia', serif;
+}
+
+/* Стил на всеки цитат */
+.quotes-list-air li {
+  background: rgba(255, 255, 255, 0.85);
+  margin-bottom: 1rem;
+  padding: 1rem 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: #2e537d;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Hover ефект на box */
+.quotes-list-air li:hover {
+  background: rgba(139, 195, 74, 0.1); /* лек зелен фон */
+  transform: translateY(-5px); /* леко повдигане */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+
+/* Hover ефект върху целия box */
+.quotes-list-air li:hover {
+  background: rgba(2,136,209,0.15); /* леко оцветяване */
+  transform: translateY(-5px); /* леко повдигане */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
